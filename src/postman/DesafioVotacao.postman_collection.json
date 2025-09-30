@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "2d8c0689-2f05-4f24-9018-5a866cedc61e",
+		"name": "DesafioVotacao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "16595962",
+		"_collection_link": "https://planetary-meteor-655020.postman.co/workspace/Team-Workspace~ec3c108e-908c-4d4d-8636-962d03b4df7d/collection/16595962-2d8c0689-2f05-4f24-9018-5a866cedc61e?action=share&source=collection_link&creator=16595962"
+	},
+	"item": [
+		{
+			"name": "Pautas",
+			"item": [
+				{
+					"name": "criaPauta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"titulo\": \"Nova Pauta\", \r\n    \"descricao\": \"Descrição...\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/pautas"
+					},
+					"response": []
+				},
+				{
+					"name": "pautaPorId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pautas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pautas",
+								"1"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListAllPautas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/pautas"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sessoes",
+			"item": [
+				{
+					"name": "AbreSessao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pautaId\": 1,\r\n  \"duracaoEmMinutos\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/sessoes"
+					},
+					"response": []
+				},
+				{
+					"name": "sessaoPorId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"pauta\": \r\n    {\r\n        \"id\": 1\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/sessoes/1"
+					},
+					"response": []
+				},
+				{
+					"name": "ListAllSessoes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/sessoes"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Votos",
+			"item": [
+				{
+					"name": "registrarVoto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"sessaoId\": 1, \r\n    \"associadoId\": \"12345678901\", \r\n    \"opcao\": \"SIM\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/votos"
+					},
+					"response": []
+				},
+				{
+					"name": "retornaQuantVotos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/votos/resultado/1"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
