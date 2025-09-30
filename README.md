@@ -32,7 +32,7 @@ A aplicação expõe **API REST** pronta para integração com dispositivos móv
 ---
 
 ## Estrutura do Projeto
-
+```
 desafio-votacao/
 │
 ├─ src/
@@ -82,7 +82,7 @@ desafio-votacao/
 ├─ pom.xml
 ├─ README.md
 └─ .gitignore
-
+```
 
 ---
 
@@ -136,9 +136,9 @@ Registrar votos com CPFs aleatórios
 Consultar resultado
 
 # Testes Unitários
-Sequência sugerida:
-Pauta
-Abrir Sessão
-Registrar votos com CPFs aleatórios
-Consultar resultado
+- Sequência sugerida:
+- Pauta
+- Abrir Sessão
+- Registrar votos com CPFs aleatórios
+- Consultar resultado
 
