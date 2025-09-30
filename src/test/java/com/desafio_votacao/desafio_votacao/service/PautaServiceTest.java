@@ -1,58 +1,40 @@
 package com.desafio_votacao.desafio_votacao.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import com.desafio_votacao.entity.Pauta;
-import com.desafio_votacao.repository.PautaRepository;
 import com.desafio_votacao.service.PautaService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class PautaServiceTest {
 
-    @InjectMocks
+    @Autowired
     private PautaService pautaService;
-
-    @Mock
-    private PautaRepository pautaRepository;
-
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     void deveSalvarPautaComSucesso() {
         Pauta pauta = new Pauta();
-        pauta.setTitulo("Teste");
-        pauta.setDescricao("Descrição Teste");
+        pauta.setTitulo("Teste Pauta");
+        pauta.setDescricao("Descrição teste");
 
-        when(pautaRepository.save(any(Pauta.class))).thenReturn(pauta);
-
-        Pauta resultado = pautaService.salvarPauta(pauta);
-
-        assertNotNull(resultado);
-        assertEquals("Teste", resultado.getTitulo());
+        Pauta salva = pautaService.criarPauta(pauta);
+        assertNotNull(salva.getId());
+        assertEquals("Teste Pauta", salva.getTitulo());
     }
 
     @Test
     void deveBuscarPautaPorId() {
         Pauta pauta = new Pauta();
-        pauta.setId(1L);
-        pauta.setTitulo("Teste");
+        pauta.setTitulo("Buscar");
+        pauta.setDescricao("Descrição");
 
-        when(pautaRepository.findById(1L)).thenReturn(Optional.of(pauta));
+        Pauta salva = pautaService.criarPauta(pauta);
+        Pauta encontrada = pautaService.buscarPorId(salva.getId());
 
-        Pauta resultado = pautaService.buscarPorId(1L);
-
-        assertNotNull(resultado);
-        assertEquals(1L, resultado.getId());
+        assertNotNull(encontrada);
+        assertEquals(salva.getId(), encontrada.getId());
     }
 }
-
